@@ -2173,10 +2173,10 @@ export function serialize() {
                     },
                     mentionedJid: {
                         get() {
-                            return q.contextInfo?.mentionedJid?.length && q.contextInfo.mentionedJid || []
+                            return quoted[type]?.contextInfo?.mentionedJid || [];
                         },
                         enumerable: true
-                    },
+                    },                    
                     name: {
                         get() {
                             const sender = this.sender
