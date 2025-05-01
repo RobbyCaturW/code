@@ -2173,7 +2173,7 @@ export function serialize() {
                     },
                     mentionedJid: {
                         get() {
-                            return m.quoted.contextInfo?.mentionedJid?.length && m.quoted.contextInfo.mentionedJid || []
+                            return this.msg?.quoted?.contextInfo?.mentionedJid?.length && m.quoted.contextInfo.mentionedJid || []
                         },
                         enumerable: true
                     },
