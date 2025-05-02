@@ -2174,8 +2174,7 @@ export function serialize() {
                     },
                     mentionedJid: {
                         get() {
-                            const txt = text || this.caption || this.contentText || this.selectedDisplayText || ''
-                            return getMentionsFromText(txt)
+                            return this.msg?.contextInfo?.quotedMessage[type]?.contextInfo?.mentionedJid?.length && this.msg?.contextInfo?.quotedMessage[type]?.contextInfo?.mentionedJid || [];
                         },
                         enumerable: true
                     },                    
@@ -2503,8 +2502,4 @@ function getRandom() {
  */
 function nullish(args) {
     return !(args !== null && args !== undefined)
-}
-
-function getMentionsFromText(text) {
-    return [...text.matchAll(/@(\d{5,})/g)].map(m => m[1] + '@s.whatsapp.net')
 }
