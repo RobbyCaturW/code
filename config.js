@@ -1,4 +1,4 @@
-import { watchFile, readFileSync } from 'fs';
+import { watchFile, readFileSync, createWriteStream } from 'fs';
 import chalk from 'chalk';
 import cheerio from 'cheerio';
 import fetch from 'node-fetch';
@@ -10,7 +10,7 @@ global.confirmCode = '';
 // • ↳ APPROVED DEVELOPERS
 global.owner = JSON.parse(readFileSync('./src/owner.json'))
 try {
-  global.prems = JSON.parse(fs.readFileSync('./lib/prems.json'))
+  global.prems = JSON.parse(readFileSync('./lib/prems.json'))
 } catch {
   global.prems = {}
 }
@@ -25,7 +25,7 @@ global.botname = 'Karyl Bot';
 global.vs = '2.0.1';
 
 // • ↳ IMAGES
-global.img = fs.readFileSync('./Karyl.jpg')
+global.img = readFileSync('./Karyl.jpg')
 
 // • ↳ FAKE STYLE
 global.style = {
@@ -141,7 +141,7 @@ global.flow = (s, n = '') => {
 };
 
 const logFilePath = './log.txt';
-const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
+const logStream = createWriteStream(logFilePath, { flags: 'a' });
 
 watchFile(logFilePath, (curr, prev) => {
   console.log(chalk.green('Log file has been modified.'));
