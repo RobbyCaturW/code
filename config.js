@@ -1,18 +1,19 @@
-import { watchFile, unwatchFile } from 'fs';
+import { watchFile, readFileSync } from 'fs';
 import chalk from 'chalk';
-import { fileURLToPath } from 'url';
-import fs from 'fs'; 
 import cheerio from 'cheerio';
 import fetch from 'node-fetch';
-import axios from 'axios';
 import moment from 'moment-timezone';
 
 global.botnumber = '6287865012381';
 global.confirmCode = '';
 
 // • ↳ APPROVED DEVELOPERS
-global.owner = JSON.parse(fs.readFileSync('./src/owner.json'))
-global.prems = JSON.parse(fs.readFileSync('../lib/prems.json'))
+global.owner = JSON.parse(readFileSync('./src/owner.json'))
+try {
+  global.prems = JSON.parse(fs.readFileSync('./lib/prems.json'))
+} catch {
+  global.prems = {}
+}
 global.mods = [];
 
 // • ↳ PACKAGING INFORMATION
